@@ -1,6 +1,15 @@
 # tricks and tips
  collected for optimizing deeplearning models.
 
+all images used is in directory:
+
+    ./images
+while all papers referred is in directory:
+
+    ./papers
+
+
+
  **any fixes or advice is highly welcome, feel free to inform me <oukohou@outlook.com>.**
 
 ## 1. data augmentation.
@@ -8,20 +17,27 @@
 - for images, do random crops, rotation, flip, color, blah blah....
 - more generally, do upsampling, downsampling, so on.
 
-## 2. classes imbalance.
-- sample many times on classes of less data, train multiple models.
-- downsample on classes of more data, train less model.
-- to be continued.
+## 2. class imbalance.
+most of the time, the datasets classes will be imbalance, what to do?
+- over-sample on minority classes several times, train less models.
+- down-sample on majority classes many times, train more models.
+- do no resample, instead generate new samples, such as [SMOTE](http://download.springer.com/static/pdf/448/bok%253A978-3-642-24958-7.pdf?originUrl=https%3A%2F%2Flink.springer.com%2Fbook%2F10.1007%2F978-3-642-24958-7&token2=exp=1506651779~acl=%2Fstatic%2Fpdf%2F448%2Fbok%25253A978-3-642-24958-7.pdf%3ForiginUrl%3Dhttps%253A%252F%252Flink.springer.com%252Fbook%252F10.1007%252F978-3-642-24958-7*~hmac=6dbf88c18d0d33f794e04534e1cdaa721a7a0bb108fb85a188a49b973af09aa4).
+- adjust the weight of different classes, for instance, increase the weight of minority class.
+- other ways to get more data: buy, demand, etc....
+
+this is mainly based on this [blog](http://www.cnblogs.com/zhizhan/p/5821542.html), see for detail.
 
 ## 3. parameter adjustment.
+how to choose the best params?
 - most commonly used: grid search.
 - according to experience: learning rate between 0.01-0.001, activation
  as Relu, convolution kernel of 3x3, so on.
-- remember to adjust parameters in contrast, always compare and find which
+
+remember to adjust parameters in contrast, always compare and find which
 is better, never blindly add layers.
 
 ## 4. fine-tuning.
-fine-tuning if mostly used for transfer learning.
+fine-tuning is mostly used for transfer learning.
 
 what is fine-tuning?
 
